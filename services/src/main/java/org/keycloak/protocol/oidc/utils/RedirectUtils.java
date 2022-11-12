@@ -181,6 +181,16 @@ public class RedirectUtils {
                 if (length - 1 > 0 && validRedirect.charAt(length - 1) == '/') length--;
                 validRedirect = validRedirect.substring(0, length);
                 if (validRedirect.equals(r)) return true;
+
+                // treats it as regex if contains * or ?
+                boolean isRegex = validRedirect.indexOf('*') > 0 || validRedirect.indexOf('?') > 0 || validRedirect.indexOf('+') > 0;
+                if (isRegex) {
+                    validRedirect = "^" + validRedirect; // avoiding matching in the middle of the url
+                    Pattern pattern = Pattern.compile(validRedirect);
+                    if (pattern.matcher(r).find()) {
+                      return true;
+                    }
+                }
             } else if (validRedirect.equals(redirect)) return true;
         }
         return false;
