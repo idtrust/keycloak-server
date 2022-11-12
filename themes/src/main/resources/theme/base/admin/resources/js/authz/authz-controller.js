@@ -1603,6 +1603,30 @@ module.controller('ResourceServerPolicyClientDetailCtrl', function($scope, $rout
     }, realm, client, $scope);
 });
 
+module.controller('ResourceServerPolicyPlatformDetailCtrl', function($scope, $route, realm, client, PolicyController, Client) {
+    PolicyController.onInit({
+        getPolicyType : function() {
+            return "platform";
+        },
+
+        onInit : function() {},
+
+        onInitUpdate : function(policy) {},
+
+        onUpdate : function() {
+            delete $scope.policy.config;
+        },
+
+        onInitCreate : function() {
+
+        },
+
+        onCreate : function() {
+            delete $scope.policy.config;
+        }
+    }, realm, client, $scope);
+});
+
 module.controller('ResourceServerPolicyRoleDetailCtrl', function($scope, $route, realm, client, Client, ClientRole, PolicyController, Role, RoleById) {
     PolicyController.onInit({
         getPolicyType : function() {
