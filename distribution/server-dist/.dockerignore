@@ -1,0 +1,10 @@
+/src
+pom.xml
+assembly.xml
+assembly-zip-only.xml
+
+/target/keycloak-*.zip
+/target/archive-tmp
+/target//verifier
+/target/keycloak-15.1.1
+/target/dependency-maven-plugin-markers
